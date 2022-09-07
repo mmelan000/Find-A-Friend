@@ -42,6 +42,11 @@ User.init(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    languages: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'English',
+    },
     city: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -51,6 +56,7 @@ User.init(
     },
     country: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     });
     return res.json(allCategories);
   } catch (error) {
-    console.log(error);
+    return res.status(500).json(error);
   }
 });
 

@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS Friends_db;
+DROP DATABASE IF EXISTS friends_db;
 
-CREATE DATABASE Friends_db;
+CREATE DATABASE friends_db;

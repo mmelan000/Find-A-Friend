@@ -20,7 +20,7 @@ const userData = [
     last_name: 'Bestow',
     age: 47,
     language: 'English',
-    city: 'Los Angelos',
+    city: 'Los Angeles',
     state: 'California',
     country: 'United states',
     password: 'WordsOnPages',
@@ -63,6 +63,6 @@ const userData = [
   },
 ];
 
-const seedUser = () => User.bulkCreate(userData);
+const seedUser = () => User.bulkCreate(userData, { individualHooks: true });
 
 module.exports = seedUser;

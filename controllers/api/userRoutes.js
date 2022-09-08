@@ -8,12 +8,16 @@ router.get('/', async (req, res) => {
     const allUsers = await User.findAll({
       include: [{ model: Review, as: 'review' }],
     });
-    return res.json(allUsers);
+    return res.status(200).json(allUsers);
+    //
   } catch (error) {
-    console.log(error);
+    return res.status(500).json(error);
+
+    //500 error
   }
 });
 
+//404 error for user not existing
 router.get('/:id', (req, res) => {});
 
 router.post('/', (req, res) => {});

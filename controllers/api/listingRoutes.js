@@ -1,8 +1,18 @@
 const router = require('express').Router();
+const { User, Review, Listing, Category } = require('../../models');
 
-// The `/api/user` endpoint
+// The `/api/listing` endpoint
 
-router.get('/', (req, res) => {});
+router.get('/', async (req, res) => {
+  try {
+    const allListings = await Listing.findAll({
+      include: [{ model: Category, as: 'category' }],
+    });
+    return res.json(allListings);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 router.get('/:id', (req, res) => {});
 

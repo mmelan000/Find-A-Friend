@@ -19,7 +19,7 @@ Listing.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    availablility: {
+    availabilty: {
       type: DataTypes.STRING,
       allowNull: false,
     },

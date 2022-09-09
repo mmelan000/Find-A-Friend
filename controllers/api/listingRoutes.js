@@ -14,7 +14,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {});
+router.get('/:id', (req, res) => {
+  try {
+  } catch (error) {}
+});
 
 router.post('/', (req, res) => {});
 

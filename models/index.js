@@ -9,6 +9,7 @@ User.hasMany(Review, {
 
 Review.belongsTo(User, {
   foreignKey: 'user_id',
+  as: 'reviewer',
 });
 
 User.hasMany(Review, {
@@ -17,6 +18,7 @@ User.hasMany(Review, {
 
 Review.belongsTo(User, {
   foreignKey: 'reviewee_id',
+  as: 'reviewee',
 });
 
 User.hasMany(Listing, {

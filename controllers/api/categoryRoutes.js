@@ -5,7 +5,7 @@ const { User, Review, Listing, Category } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const allCategories = await Category.findAll({
-      include: [{ model: Listing, as: 'listing' }],
+      include: [{ model: Listing }],
     });
     return res.json(allCategories);
   } catch (error) {

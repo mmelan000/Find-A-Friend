@@ -20,5 +20,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('WERE DOING IT!'));
+  app.listen(PORT, () =>
+    console.log(
+      '\nServer running on port ${PORT}. Visit http://localhost:${PORT}!'
+    )
+  );
 });

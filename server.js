@@ -8,7 +8,7 @@ const { sequelize, sessionConfig } = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
 app.use(session(sessionConfig));
 app.use(express.json());

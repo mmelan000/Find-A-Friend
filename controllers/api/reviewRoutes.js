@@ -14,7 +14,18 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {});
+router.get('/:id', async (req, res) => {
+  try {
+    const singleReview = await User.findOne({
+      where: { id: req.params.id },
+    });
+    return res.status(200).json(singleReview);
+  } catch (error) {
+    if (req.status(404)) {
+      return res.status(404).json(error);
+    }
+  }
+});
 
 router.post('/', (req, res) => {});
 

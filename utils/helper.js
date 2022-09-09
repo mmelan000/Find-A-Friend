@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
     // the helper method 'format_time' will take in a timestamp and return a custom formatted string
     format_time: (date) => {
         //'toLocaleTimeString()' method to format the time with custom parameters
@@ -19,3 +20,13 @@ module.exports = {
         }
     },
 };
+=======
+  withAuth: (req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.status(500).json({ message: 'YOU NEED TO BE LOGGED IN!' });
+    }
+  },
+};
+>>>>>>> 6781a0642c404584eeb64569fccb9951e310c958

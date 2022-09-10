@@ -16,8 +16,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const singleReview = await User.findOne({
+    const singleReview = await Review.findOne({
       where: { id: req.params.id },
+      include: ['reviewer', 'reviewee'],
     });
     return res.status(200).json(singleReview);
   } catch (error) {
@@ -27,7 +28,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {});
+router.post('/', async (req, res) => {
+  try {
+    const { text, score, user_id, reviewee_id } = req.body;
+    const newReview = await Review.create({
+      text,
+      score,
+      user_id,
+      reviewee_id,
+    });
+
+    res.status(200).json(newReview);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 router.put('/:id', (req, res) => {});
 

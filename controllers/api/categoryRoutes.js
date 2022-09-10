@@ -13,9 +13,32 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {});
+router.get('/:id', async (req, res) => {
+  try {
+    const singleCategory = await Category.findOne({
+      where: { id: req.params.id },
+      include: [{ model: Listing }],
+    });
+    return res.status(200).json(singleCategory);
+  } catch (error) {
+    if (req.status(404)) {
+      return res.status(404).json(error);
+    }
+  }
+});
 
-router.post('/', (req, res) => {});
+router.post('/', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const newCategory = await Category.create({
+      name,
+    });
+
+    res.status(200).json(newCategory);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 router.put('/:id', (req, res) => {});
 

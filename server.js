@@ -11,9 +11,6 @@ const sequelize = require('./config/connection');
 require('dotenv').config();
 
 const app = express();
-<<<<<<< HEAD
-// const hbs = exphbs.create({ helpers });
-=======
 const PORT = process.env.PORT || 3001;
 
 const sessionConfig = {
@@ -30,7 +27,6 @@ const sessionConfig = {
     db: sequelize,
   }),
 };
->>>>>>> 4bfd5ce266e3587174b51853f970f2702a853343
 
 app.use(session(sessionConfig));
 

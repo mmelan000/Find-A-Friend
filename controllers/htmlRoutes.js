@@ -28,9 +28,16 @@ router.get('/listings', async (req, res) => {
     user: req.session.user_id,
   });
 });
+// renders individual listings
+router.get('/listings/:id', async (req, res) => {
+  res.render('activity', {
+    loggedIn: req.session.loggedIn,
+    user: req.session.user_id,
+  });
+});
 // renders profile page
-router.get('/profile', withAuth, async (req, res) => {
-  res.render('signup', {
+router.get('/user/:id', withAuth, async (req, res) => {
+  res.render('user', {
     loggedIn: req.session.loggedIn,
     user: req.session.user_id,
   });

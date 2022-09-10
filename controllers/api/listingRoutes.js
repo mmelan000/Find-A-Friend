@@ -14,9 +14,20 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-  } catch (error) {}
+    const singleListing = await Listing.findOne({
+      where: { id: req.params.id },
+      include: {
+        model: Category,
+      },
+    });
+    return res.status(200).json(singleListing);
+  } catch (error) {
+    if (req.status(404)) {
+      return res.status(404).json(error);
+    }
+  }
 });
 
 router.post('/', (req, res) => {});

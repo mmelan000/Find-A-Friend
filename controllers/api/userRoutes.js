@@ -82,7 +82,24 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {});
+router.put('/:id', async (req, res) => {
+  if (req.session.logged_in) {
+    try {
+      User.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      return res.status(200).json();
+    } catch (err) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+  }
+});
 
 router.delete('/:id', (req, res) => {});
 

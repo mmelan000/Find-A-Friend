@@ -1,133 +1,218 @@
-<div class='container py-5 h-100'>
-  <div class='row d-flex justify-content-center align-items-center h-100'>
-    <div class='col-12 col-md-8 col-lg-6 col-xl-5'>
-      <div class='card bg-dark text-white' style='border-radius: 1rem'>
-        <div class='card-body p-5 text-center'>
-          <div class='mb-md-5 mt-md-4 pb-5'>
-            <h2 class='fw-bold mb-2 text-uppercase'>Signup</h2>
-            <p class='text-white-50 mb-5'>
-              Please enter your username, email, and password!
-            </p>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeUsernameCreate'
-              >Username</label>
-              <input
-                type='username'
-                id='typeUsernameCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeEmailCreate'
-              >Username</label>
-              <input
-                type='email'
-                id='typeEmailCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typePasswordCreate'
-              >Username</label>
-              <input
-                type='password'
-                id='typePasswordCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeFirstNameCreate'
-              >Username</label>
-              <input
-                id='typeFirstNameCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeLastNameCreate'
-              >Username</label>
-              <input
-                id='typeLastNameCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeAgeCreate'
-              >Username</label>
-              <input
-                type='date'
-                id='typeAgeCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeLanguagesCreate'
-              >Username</label>
-              <input
-                id='typeLanguagesCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeCityCreate'
-              >Username</label>
-              <input
-                id='typeCityCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeStateCreate'
-              >Username</label>
-              <input
-                id='typeStateCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <div class='form-outline form-white mb-4'></div>
-              <label
-                class='form-label'
-                for='typeCountryCreate'
-              >Username</label>
-              <input
-                id='typeCountryCreate'
-                class='form-control form-control-lg'
-              />
-            </div>
-            <button
-              class='btn btn-outline-light btn-lg px-5'
-              type='submit'
-              id='signup-form'
-            >
-              Signup
-            </button>
-            <div>
-              <p class='mb-0'>Already have an account?
-                <a href='/login' class='text-white-50 fw-bold'>Login</a>
-              </p>
+<section class='h-100 h-custom gradient-custom-2'>
+  <div class='container py-5 h-100'>
+    <div class='row d-flex justify-content-center align-items-center h-100'>
+      <div class='col-12'>
+        <div
+          class='card card-registration card-registration-2'
+          style='border-radius: 15px;'
+        >
+          {{! left side form }}
+          <div class='card-body p-0'>
+            <div class='row g-0'>
+              <div class='col-lg-6'>
+                <div class='p-5'>
+                  <h3 class='fw-normal mb-5'>General Infomation</h3>
+                  <div class='row'>
+
+                    <div class='mb-4 pb-2'>
+                      <div class='form-outline'>
+                        <input
+                          type='text'
+                          id='typeUsernameCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typeUsernameCreate'
+                        >Username</label>
+                      </div>
+                    </div>
+
+                    <div class='mb-4'>
+                      <div class='form-outline'>
+                        <input
+                          type='text'
+                          id='typeEmailCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label class='form-label' for='typeEmailCreate'>Your
+                          Email</label>
+                      </div>
+                    </div>
+
+                    <div class='mb-4'>
+                      <div class='form-outline'>
+                        <input
+                          type='password'
+                          id='typePasswordCreate1'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typePasswordCreate1'
+                        >Password</label>
+                      </div>
+                    </div>
+
+                    <div class='mb-4'>
+                      <div class='form-outline'>
+                        <input
+                          type='password'
+                          id='typePasswordCreate2'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typePasswordCreate2'
+                        >Confirm password</label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              {{! right side form }}
+              <div class='col-lg-6'>
+                <div class='p-5'>
+                  <h3 class='fw-normal mb-5'>Personal Details</h3>
+                  <div class='row'>
+                    <div class='col-md-6 mb-4 pb-2'>
+
+                      <div class='form-outline'>
+                        <input
+                          type='text'
+                          id='typeFirstNameCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typeFirstNameCreate'
+                        >First name</label>
+                      </div>
+
+                    </div>
+                    <div class='col-md-6 mb-4 pb-2'>
+
+                      <div class='form-outline'>
+                        <input
+                          type='text'
+                          id='typeLastNameCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label class='form-label' for='typeLastNameCreate'>Last
+                          name</label>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class='mb-4 pb-2'>
+                    <div class='form-outline'>
+                      <input
+                        type='date'
+                        id='typeAgeCreate'
+                        class='form-control form-control-lg'
+                      />
+                      <label
+                        class='form-label'
+                        for='typeAgeCreate'
+                      >Birthday</label>
+                    </div>
+                  </div>
+
+                  <div class='mb-4 pb-2'>
+                    <div class='form-outline form-white'>
+                      <input
+                        type='text'
+                        id='typeLanguagesCreate'
+                        class='form-control form-control-lg'
+                      />
+                      <label
+                        class='form-label'
+                        for='typeLanguagesCreate'
+                      >Languages</label>
+                    </div>
+                  </div>
+
+                  <div class='mb-4 pb-2'>
+                    <div class='form-outline form-white'>
+                      <input
+                        type='text'
+                        id='typeCityCreate'
+                        class='form-control form-control-lg'
+                      />
+                      <label
+                        class='form-label'
+                        for='typeCityCreate'
+                      >City</label>
+                    </div>
+                  </div>
+
+                  <div class='row'>
+                    <div class='col-md-5 mb-4 pb-2'>
+
+                      <div class='form-outline form-white'>
+                        <input
+                          type='text'
+                          id='typeStateCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typeStateCreate'
+                        >State</label>
+                      </div>
+
+                    </div>
+                    <div class='col-md-7 mb-4 pb-2'>
+
+                      <div class='form-outline form-white'>
+                        <input
+                          type='text'
+                          id='typeCountryCreate'
+                          class='form-control form-control-lg'
+                        />
+                        <label
+                          class='form-label'
+                          for='typeCountryCreate'
+                        >Country</label>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div
+                    class='form-check d-flex justify-content-start mb-4 pb-3'
+                  >
+                    <input
+                      class='form-check-input me-3'
+                      type='checkbox'
+                      value=''
+                      id='tacCheckbox'
+                    />
+                    <label class='form-check-label' for='form2Example3'>
+                      I do accept the
+                      <a href='/termsandconditions'><u>Terms and Conditions</u></a>
+                      of your site.
+                    </label>
+                  </div>
+
+                  <button
+                    type='button'
+                    class='btn btn-dark btn-lg'
+                    data-mdb-ripple-color='dark'
+                    id='signup-form'
+                  >Register</button>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script src='./javascript/signup.js'></script>
+</section>
+<script src='./javascript/signup.js' defer></script>

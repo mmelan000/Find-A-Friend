@@ -66,12 +66,10 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!deletedreview) {
-      return res
-        .status(404)
-        .json({ message: 'No listing found with that id.' });
+      return res.status(404).json({ message: 'No review found with that id.' });
     }
     return res.status(200).json({
-      message: 'That listing has been deleted with that id',
+      message: 'That review has been deleted with that id',
     });
   } catch (error) {
     return res.status(500).json(error);

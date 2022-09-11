@@ -103,6 +103,23 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedUser = await User.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'No User found with that id.' });
+    }
+    return res.status(200).json({
+      message: 'That User has been deleted with that id',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
 
 module.exports = router;

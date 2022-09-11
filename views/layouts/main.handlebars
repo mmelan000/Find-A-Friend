@@ -14,7 +14,7 @@
     <!--navbar menu-->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a href="#" class="navbar-brand">Find a Friend</a>
+            <a href="/" class="navbar-brand">Find a Friend</a>
 
             <button 
             class="navbar-toggler"
@@ -28,29 +28,32 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#profile" class="nav-link">Profile</a>
+                    <a href="/profile" class="nav-link">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#posting" class="nav-link">Posting</a>
+                    <a href="/listings" class="nav-link">Listings</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#reviews" class="nav-link">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#activity" class="nav-link">Activity</a>
+                    {{#if loggedIn}}
+                        <a class='nav-link' href='/' id='logout'>Logout</a>
+                    {{else}}
+                        <a class='nav-link' href='/login'>Login</a>
+                    {{/if}}
                 </li>
             </ul>
         </div>
     </nav>
-
-    <div class="container">
+    <main>
         {{{body}}}
-    </div>
-
+    </main>
     <!-- JavaScript Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    {{#if loggedIn}}
+      <script src='/javascript/logout.js'></script>
+    {{/if}}
 </body>
 </html>

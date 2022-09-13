@@ -72,5 +72,12 @@ router.get('/profile', async (req, res) => {
     user: req.session.user_id,
   });
 });
+// friends
+router.get('/friends', async (req, res) => {
+  res.render('friends', {
+    loggedIn: req.session.logged_in,
+    user: req.session.user_id,
+  });
+});
 
 module.exports = router;

@@ -35,11 +35,21 @@ router.get('/listings', async (req, res) => {
   });
 });
 // renders individual listings
-router.get('/listings/:id', async (req, res) => {
-  res.render('activity', {
-    loggedIn: req.session.logged_in,
-    user: req.session.user_id,
-  });
+router.get('/listings/:id', withAuth, async (req, res) => {
+  try {
+    const listingData = await Listing.findByPk(req.params.id);
+    if (!listingData) {
+      res.status(404).json({ message: 'This is no listing with that id!' });
+    }
+    const listing = listingData.get({ plain: true });
+    res.render('activity', {
+      loggedIn: req.session.logged_in,
+      user: req.session.user_id,
+      listing,
+    });
+  } catch (error) {
+    res.status(500).json(err);
+  }
 });
 // renders profile page
 router.get('/user/:id', withAuth, async (req, res) => {

@@ -27,11 +27,21 @@ router.get('/listings', async (req, res) => {
   const listingData = await Listing.findAll().catch((err) => {
     res.json(err);
   });
+
+  const cateData = await Category.findAll().catch((err) => {
+    res.json(err);
+  });
+  const categories = cateData.map((category) => category.get({ plain: true }));
   const listings = listingData.map((listing) => listing.get({ plain: true }));
+
+  listings.forEach((element) => {
+    element.loggedIn = req.session.logged_in;
+  });
   res.render('listings', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,
     listings,
+    categories,
   });
 });
 // renders individual listings
@@ -41,6 +51,7 @@ router.get('/listings/:id', withAuth, async (req, res) => {
     if (!listingData) {
       res.status(404).json({ message: 'This is no listing with that id!' });
     }
+
     const listing = listingData.get({ plain: true });
     res.render('activity', {
       loggedIn: req.session.logged_in,
@@ -51,13 +62,7 @@ router.get('/listings/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-// renders profile page
-router.get('/user/:id', withAuth, async (req, res) => {
-  res.render('user', {
-    loggedIn: req.session.logged_in,
-    user: req.session.user_id,
-  });
-});
+
 // renders post page
 router.get('/post', withAuth, async (req, res) => {
   res.render('post', {
@@ -67,10 +72,18 @@ router.get('/post', withAuth, async (req, res) => {
 });
 // renders account
 router.get('/profile', async (req, res) => {
-  res.render('profile', {
-    loggedIn: req.session.logged_in,
-    user: req.session.user_id,
-  });
+  try {
+    const userData = await User.findByPk(req.params.id);
+    if (!userData) {
+      res.status(404).json({ message: 'This is no user with that id!' });
+    }
+    const user = userData.get({ plain: true });
+    res.render('user', {
+      loggedIn: req.session.logged_in,
+      user: req.session.user_id,
+      user,
+    });
+  } catch (error) {}
 });
 // friends
 router.get('/friends', async (req, res) => {

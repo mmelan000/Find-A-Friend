@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
   let password;
 
   if (password1 !== password2) {
-    alert('Passwords do not match! Also, this should really be a modal.');
+    $('#myModal').modal('show');
     return;
   } else {
     password = password1;

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/authorize.js');
+const { User, Review, Listing, Category } = require('../models');
 // renders homepage
 router.get('/', async (req, res) => {
   res.render('home', {
@@ -23,9 +24,14 @@ router.get('/login', async (req, res) => {
 });
 // renders listings page
 router.get('/listings', async (req, res) => {
+  const listingData = await Listing.findAll().catch((err) => {
+    res.json(err);
+  });
+  const listings = listingData.map((listing) => listing.get({ plain: true }));
   res.render('listings', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,
+    listings,
   });
 });
 // renders individual listings

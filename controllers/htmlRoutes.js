@@ -71,14 +71,14 @@ router.get('/post', withAuth, async (req, res) => {
   });
 });
 // renders account
-router.get('/profile', async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {
       res.status(404).json({ message: 'This is no user with that id!' });
     }
     const user = userData.get({ plain: true });
-    res.render('user', {
+    res.render('profile', {
       loggedIn: req.session.logged_in,
       user: req.session.user_id,
       user,
@@ -87,9 +87,17 @@ router.get('/profile', async (req, res) => {
 });
 // friends
 router.get('/friends', async (req, res) => {
+  const friendList = await User.findAll().catch((err) => {
+    res.json(err);
+  });
+  const friends = friendList.map((friend) => friend.get({ plain: true }));
+  friends.forEach((element) => {
+    element.loggedIn = req.session.logged_in;
+  });
   res.render('friends', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,
+    friends,
   });
 });
 

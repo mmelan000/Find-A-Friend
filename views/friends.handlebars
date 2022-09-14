@@ -18,7 +18,6 @@
       </ul>
     </div>
     <div class='col-md-9 col-md-pull-3'>
-      <p class='search-results-count'>About 94 700 000 (0.39 sec.) results</p>
       {{#each friends as |friend|}}
         <section class='search-result-item'>
           <a class='image-link' href='#'><img
@@ -37,7 +36,7 @@
                   bigger. Not just usual widgets, but real widgets. Not just yet
                   another admin template, but next generation admin template.</p>
               </div>
-              {{#if loggedIn}}
+              {{#if ./loggedIn}}
                 <div class='col-sm-3 text-align-center'>
                   <a
                     class='btn btn-primary btn-info btn-sm'

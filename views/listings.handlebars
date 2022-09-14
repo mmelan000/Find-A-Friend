@@ -30,11 +30,13 @@
               <div class='select-container'>
                 <select class='custom-select'>
                   <option selected=''>Availabilty</option>
-                  {{#each listings as |listing|}}
-                    <option
-                      value={{listing.id}}
-                    >{{listing.availabilty}}</option>
-                  {{/each}}
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
                 </select>
               </div>
             </div>
@@ -42,8 +44,9 @@
               <div class='select-container'>
                 <select class='custom-select'>
                   <option selected=''>Select Type</option>
-                  <option value='1'>Indoor</option>
-                  <option value='2'>Outdoor</option>
+                  {{#each categories as |category|}}
+                  <option value='{{category.id}}'>{{category.name}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
@@ -61,7 +64,15 @@
 
         <div class='filter-result'>
 
-          <p class='mb-30 ff-montserrat'>Total activities : 89</p>
+          {{#if loggedIn}}
+          <button
+                type='button'
+                class='btn btn-lg btn-block btn-light btn-custom'
+                id='new-posting'
+              >
+                New Activity
+              </button>
+              {{/if}}
           {{#each listings as |listing|}}
             <div
               class='job-box d-md-flex align-items-center justify-content-between mb-30'
@@ -87,12 +98,14 @@
                   </ul>
                 </div>
               </div>
+              {{#if ./loggedIn}}
               <div class='job-right my-4 flex-shrink-0'>
                 <a
                   href='/listings/1'
                   class='btn d-block w-100 d-sm-inline-block btn-light'
-                >Reserve now</a>
+                >Join now</a>
               </div>
+              {{/if}}
             </div>
           {{/each}}
         </div>

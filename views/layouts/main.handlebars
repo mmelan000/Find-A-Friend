@@ -37,9 +37,11 @@
                 <li class="nav-item">
                     <a href="/" class="nav-link">Home</a>
                 </li>
+                {{#if loggedIn}}
                 <li class="nav-item">
-                    <a href="/profile" class="nav-link">Profile</a>
+                    <a href="/profile/{{user}}" class="nav-link">Profile</a>
                 </li>
+                {{/if}}
                 <li class="nav-item">
                     <a href="/friends" class="nav-link">Friends</a>
                 </li>

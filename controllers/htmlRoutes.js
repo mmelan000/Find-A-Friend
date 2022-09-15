@@ -62,9 +62,9 @@ router.get('/listings/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+withAuth
 // renders post page
-router.get('/post', withAuth, async (req, res) => {
+router.get('/post',  async (req, res) => {
   res.render('post', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,

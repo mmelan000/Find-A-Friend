@@ -68,7 +68,7 @@ router.get('/post', async (req, res) => {
   });
 });
 // renders account
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {

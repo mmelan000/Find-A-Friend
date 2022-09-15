@@ -34,9 +34,6 @@ router.get('/listings', async (req, res) => {
   const categories = cateData.map((category) => category.get({ plain: true }));
   const listings = listingData.map((listing) => listing.get({ plain: true }));
 
-  listings.forEach((element) => {
-    element.loggedIn = req.session.logged_in;
-  });
   res.render('listings', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,
@@ -91,9 +88,6 @@ router.get('/friends', async (req, res) => {
     res.json(err);
   });
   const friends = friendList.map((friend) => friend.get({ plain: true }));
-  friends.forEach((element) => {
-    element.loggedIn = req.session.logged_in;
-  });
   res.render('friends', {
     loggedIn: req.session.logged_in,
     user: req.session.user_id,

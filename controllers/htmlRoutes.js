@@ -4,21 +4,21 @@ const { User, Review, Listing, Category } = require('../models');
 // renders homepage
 router.get('/', async (req, res) => {
   res.render('home', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
   });
 });
 // renders signup page
 router.get('/signup', async (req, res) => {
   res.render('signup', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
   });
 });
 // renders login page
 router.get('/login', async (req, res) => {
   res.render('login', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
   });
 });
@@ -35,7 +35,7 @@ router.get('/listings', async (req, res) => {
   const listings = listingData.map((listing) => listing.get({ plain: true }));
 
   res.render('listings', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
     listings,
     categories,
@@ -51,7 +51,7 @@ router.get('/listings/:id', withAuth, async (req, res) => {
 
     const listing = listingData.get({ plain: true });
     res.render('activity', {
-      loggedIn: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
       user: req.session.user_id,
       listing,
     });
@@ -61,9 +61,9 @@ router.get('/listings/:id', withAuth, async (req, res) => {
 });
 
 // renders post page
-router.get('/post', withAuth, async (req, res) => {
+router.get('/post', async (req, res) => {
   res.render('post', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
   });
 });
@@ -72,15 +72,17 @@ router.get('/profile/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {
-      res.status(404).json({ message: 'This is no user with that id!' });
+      res.status(404).json({ message: 'There is no user with that id!' });
     }
     const user = userData.get({ plain: true });
     res.render('profile', {
-      loggedIn: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
       user: req.session.user_id,
       user,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json(err);
+  }
 });
 // friends
 router.get('/friends', async (req, res) => {
@@ -89,7 +91,7 @@ router.get('/friends', async (req, res) => {
   });
   const friends = friendList.map((friend) => friend.get({ plain: true }));
   res.render('friends', {
-    loggedIn: req.session.logged_in,
+    loggedIn: req.session.loggedIn,
     user: req.session.user_id,
     friends,
   });

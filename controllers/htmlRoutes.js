@@ -83,10 +83,21 @@ router.get('/listings/:id', withAuth, async (req, res) => {
 
 // renders post page
 router.get('/post', async (req, res) => {
-  res.render('post', {
-    loggedIn: req.session.loggedIn,
-    user: req.session.user_id,
-  });
+  try {
+    const cateData = await Category.findAll().catch((err) => {
+      res.json(err);
+    });
+    const categories = cateData.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render('post', {
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+      categories,
+    });
+  } catch (error) {
+    res.status(500).json(err);
+  }
 });
 // renders account
 router.get('/profile/:id', withAuth, async (req, res) => {

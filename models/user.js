@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const md5 = require('md5');
 
 class User extends Model {
   checkPassword(submittedPw) {
@@ -65,12 +66,16 @@ User.init(
         len: [8],
       },
     },
+    hashed_email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        console.log(newUserData.username);
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        newUserData.hashed_email = md5(newUserData.hashed_email);
         return newUserData;
       },
       beforeBulkUpdate: async (updateUserData) => {
@@ -78,6 +83,7 @@ User.init(
           updateUserData.attributes.password,
           10
         );
+        updateUserData.hashed_email = md5(updateUserData.hashed_email);
         return updateUserData;
       },
     },

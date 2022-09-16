@@ -2,7 +2,7 @@ const { Listing } = require('../models');
 
 const listingData = [
   {
-    title: 'Sports',
+    title: 'Bowling',
     text: 'Going to the local bowling ally.',
     availabilty: 'Thursday',
     age_range: '24',
@@ -10,7 +10,7 @@ const listingData = [
     category_id: 1,
   },
   {
-    title: 'Video Games',
+    title: 'Sea of Thieves',
     text: 'Need someone to sail the 7 seas with',
     availabilty: 'Friday',
     age_range: '28',
@@ -18,7 +18,7 @@ const listingData = [
     category_id: 2,
   },
   {
-    title: 'Watching Sports',
+    title: 'Sportsball!',
     text: 'There is a big game this weekend and would you like to watch it with someone?',
     availabilty: 'Sunday',
     age_range: '35',
@@ -34,7 +34,7 @@ const listingData = [
     category_id: 4,
   },
   {
-    title: 'Shopping',
+    title: 'Shoe Shopping',
     text: 'Need some new things',
     availabilty: 'Saturday',
     age_range: '22',

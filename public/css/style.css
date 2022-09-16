@@ -6,7 +6,7 @@
 /* < !--activitypage--> */
 
 .card {
-  background: #fff;
+  background: #ffffff;
   transition: .5s;
   border: 0;
   margin-bottom: 30px;
@@ -12905,6 +12905,10 @@ html {
   background-image: none;
 }
 
+.career-form .custom-select option {
+  color:#000;
+}
+
 .career-form .custom-select:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -12920,7 +12924,6 @@ html {
   top: calc(50% - 14px);
   font-size: 18px;
   color: #ffffff;
-  content: '\F2F9';
   font-family: "Material-Design-Iconic-Font";
 }
 

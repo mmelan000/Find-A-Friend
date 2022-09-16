@@ -25,10 +25,23 @@ router.get('/login', async (req, res) => {
 // renders listings page
 router.get('/listings', async (req, res) => {
   //req.query.day req.query.event
-
-  if (req.query.day && req.query.category) {
+  try {
+    var whereStatement = {};
+    if (req.query.day && req.query.category) {
+      whereStatement.availabilty = req.query.day;
+      whereStatement.category_id = req.query.category;
+    }
+    if (req.query.day && !req.query.category) {
+      whereStatement.availabilty = req.query.day;
+    }
+    if (!req.query.day && req.query.category) {
+      whereStatement.category_id = req.query.category;
+    }
+    if (!req.query.day && !req.query.category) {
+      whereStatement.id != null;
+    }
     const listingData = await Listing.findAll({
-      where: { availabilty: req.query.day, category_id: req.query.category },
+      where: whereStatement,
     }).catch((err) => {
       res.json(err);
     });
@@ -45,23 +58,8 @@ router.get('/listings', async (req, res) => {
       listings,
       categories,
     });
-  } else {
-    const listingData = await Listing.findAll().catch((err) => {
-      res.json(err);
-    });
-    const cateData = await Category.findAll().catch((err) => {
-      res.json(err);
-    });
-    const categories = cateData.map((category) =>
-      category.get({ plain: true })
-    );
-    const listings = listingData.map((listing) => listing.get({ plain: true }));
-    res.render('listings', {
-      loggedIn: req.session.loggedIn,
-      user: req.session.user_id,
-      listings,
-      categories,
-    });
+  } catch (error) {
+    res.status(500).json();
   }
 });
 // renders individual listings

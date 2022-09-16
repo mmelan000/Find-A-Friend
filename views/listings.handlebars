@@ -17,19 +17,9 @@
         <form action='#' class='career-form mb-60'>
           <div class='row'>
             <div class='col-md-6 col-lg-3 my-3'>
-              <div class='input-group position-relative'>
-                <input
-                  type='text'
-                  class='form-control'
-                  placeholder='Enter Your Keywords'
-                  id='keywords'
-                />
-              </div>
-            </div>
-            <div class='col-md-6 col-lg-3 my-3'>
               <div class='select-container'>
-                <select class='custom-select'>
-                  <option selected=''>Availabilty</option>
+                <select class='custom-select' id="availability-select">
+                  <option value="" selected=''>Availabilty</option>
                   <option value="Monday">Monday</option>
                   <option value="Tuesday">Tuesday</option>
                   <option value="Wednesday">Wednesday</option>
@@ -42,21 +32,28 @@
             </div>
             <div class='col-md-6 col-lg-3 my-3'>
               <div class='select-container'>
-                <select class='custom-select'>
-                  <option selected=''>Select Category</option>
+                <select class='custom-select' id="category-select">
+                  <option value='' selected=''>Select Category</option>
                   {{#each categories as |category|}}
-                    <option value='{{category.id}}'>{{category.name}}</option>
+                    <option name='category' value='{{category.id}}'>{{category.name}}</option>
                   {{/each}}
                 </select>
               </div>
             </div>
             <div class='col-md-6 col-lg-3 my-3'>
               <button
-                type='button'
+                type='submit'
                 class='btn btn-lg btn-block btn-light btn-custom'
                 id='listing-submit'
               >
                 Search
+              </button>
+              <button
+                type='submit'
+                class='btn btn-lg btn-block btn-light btn-custom'
+                id='clear-submit'
+              >
+                Clear
               </button>
             </div>
           </div>
@@ -74,7 +71,7 @@
                 New Activity
               </button>
               </a>
-              {{/if}}
+            {{/if}}
           {{#each listings as |listing|}}
             <div
               class='job-box d-md-flex align-items-center justify-content-between mb-30'
@@ -88,11 +85,6 @@
                 <div class='job-content'>
                   <h5 class='text-center text-md-left'>{{listing.title}}</h5>
                   <ul class='d-md-flex flex-wrap text-capitalize ff-open-sans'>
-                    <li class='mr-md-4'>
-                      <i class='zmdi zmdi-pin mr-2'></i>
-                      {{! location }}
-                      Los Angeles &nbsp;
-                    </li>
                     <li class='mr-md-4'>
                       <i class='zmdi zmdi-time mr-2'></i>
                       {{listing.availabilty}}
@@ -145,3 +137,4 @@
   </div>
 
 </div>
+<script src='/javascript/listings.js'></script>

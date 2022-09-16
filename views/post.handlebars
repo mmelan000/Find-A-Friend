@@ -27,6 +27,18 @@
 
                     <div class='mb-4'>
                       <div class='form-outline'>
+                        <input
+                          type='text'
+                          id='typeAgeRange'
+                          class='form-control form-control-lg'
+                        />
+                        <label class='form-label' for='typeAgeRange'>Enter an
+                          Age Range</label>
+                      </div>
+                    </div>
+
+                    <div class='mb-4'>
+                      <div class='form-outline'>
                         <div class='select-container'>
                           <select
                             class='custom-select'
@@ -84,6 +96,7 @@
                             class='form-control'
                             placeholder='Post'
                             rows='4'
+                            id='activity-description'
                           ></textarea>
                           <div class='post-options'>
 
@@ -95,9 +108,9 @@
                   </div>
                   <button
                     type='button'
-                    class='btn btn-dark btn-lg'
+                    class='btn btn-dark btn-lg post-form'
                     data-mdb-ripple-color='dark'
-                    id='post-form'
+                    id='{{user}}'
                   >Post</button>
 
                 </div>
@@ -109,19 +122,5 @@
     </div>
   </div>
 </section>
-<div class='modal' tabindex='-1' role='dialog' id='myModal'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Password Mismatch</h5>
-      </div>
-      <div class='modal-body'>
-        <p>Oops! Looks like your passowrds do not match.</p>
-      </div>
-      <div class='modal-footer'>
-        <p class='text-secondary'><small>Click anywhere to close this message.</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-<script src='/javascript/signup.js' defer></script>
+
+<script src='/javascript/post.js' defer></script>

@@ -83,7 +83,7 @@ router.get('/listings/:id', withAuth, async (req, res) => {
 });
 
 // renders post page
-router.get('/post', async (req, res) => {
+router.get('/post', withAuth, async (req, res) => {
   try {
     const cateData = await Category.findAll().catch((err) => {
       res.json(err);

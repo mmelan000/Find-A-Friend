@@ -26,5 +26,5 @@ document
   .querySelector('#listing-submit')
   .addEventListener('click', searchingListings);
 
-document.querySelector('#clear-search').addEventListener('click', clearSearch);
+document.querySelector('#clear-submit').addEventListener('click', clearSearch);
 //access it through event.target.value

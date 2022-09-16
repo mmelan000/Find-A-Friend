@@ -31,17 +31,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  console.log(req.body);
   try {
-    const { title, text, availabilty, age_range, user_id, category_id } =
-      req.body;
-    const newListing = await Listing.create({
-      title,
-      text,
-      availabilty,
-      age_range,
-      user_id,
-      category_id,
-    });
+    const newListing = await Listing.create(req.body);
 
     res.status(200).json(newListing);
   } catch (err) {

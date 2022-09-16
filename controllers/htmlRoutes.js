@@ -24,22 +24,45 @@ router.get('/login', async (req, res) => {
 });
 // renders listings page
 router.get('/listings', async (req, res) => {
-  const listingData = await Listing.findAll().catch((err) => {
-    res.json(err);
-  });
+  //req.query.day req.query.event
 
-  const cateData = await Category.findAll().catch((err) => {
-    res.json(err);
-  });
-  const categories = cateData.map((category) => category.get({ plain: true }));
-  const listings = listingData.map((listing) => listing.get({ plain: true }));
-
-  res.render('listings', {
-    loggedIn: req.session.loggedIn,
-    user: req.session.user_id,
-    listings,
-    categories,
-  });
+  if (req.query.day && req.query.category) {
+    const listingData = await Listing.findAll({
+      where: { availabilty: req.query.day, category_id: req.query.category },
+    }).catch((err) => {
+      res.json(err);
+    });
+    const listings = listingData.map((listing) => listing.get({ plain: true }));
+    const cateData = await Category.findAll().catch((err) => {
+      res.json(err);
+    });
+    const categories = cateData.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render('listings', {
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+      listings,
+      categories,
+    });
+  } else {
+    const listingData = await Listing.findAll().catch((err) => {
+      res.json(err);
+    });
+    const cateData = await Category.findAll().catch((err) => {
+      res.json(err);
+    });
+    const categories = cateData.map((category) =>
+      category.get({ plain: true })
+    );
+    const listings = listingData.map((listing) => listing.get({ plain: true }));
+    res.render('listings', {
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+      listings,
+      categories,
+    });
+  }
 });
 // renders individual listings
 router.get('/listings/:id', withAuth, async (req, res) => {

@@ -2,19 +2,19 @@ const { Category } = require('../models');
 
 const categoryData = [
   {
-    name: 'Bowling',
+    name: 'Playing Sports',
   },
   {
-    name: 'Sea of Theives',
+    name: 'Video Games',
   },
   {
     name: 'Watching Sports',
   },
   {
-    name: 'Hiking',
+    name: 'Outdoors',
   },
   {
-    name: 'Shoes Shopping',
+    name: 'Shopping',
   },
 ];
 

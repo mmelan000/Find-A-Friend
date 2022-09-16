@@ -12,6 +12,7 @@ const userData = [
     state: 'Massachusetts',
     country: 'United states',
     password: 'SportzRule',
+    hashed_email: 'Samuel@email.com',
   },
   {
     username: 'BookWormBrooke',
@@ -24,6 +25,7 @@ const userData = [
     state: 'California',
     country: 'United states',
     password: 'WordsOnPages',
+    hashed_email: 'Brooke@email.com',
   },
   {
     username: 'BobTheBowler',
@@ -36,6 +38,7 @@ const userData = [
     state: 'Pennsylvania',
     country: 'United states',
     password: 'StikeMan',
+    hashed_email: 'Bob@email.com',
   },
   {
     username: 'OutdoorOlivia',
@@ -48,6 +51,7 @@ const userData = [
     state: 'British Columbia',
     country: 'Canada',
     password: 'NatureYeah',
+    hashed_email: 'Olivia@email.com',
   },
   {
     username: 'MermaidMaddy',
@@ -60,6 +64,7 @@ const userData = [
     state: 'Quintana Roo',
     country: 'Mexico',
     password: 'SwimmingWithFishes',
+    hashed_email: 'Maddy@email.com',
   },
 ];
 

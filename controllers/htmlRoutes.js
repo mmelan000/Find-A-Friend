@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../utils/authorize.js');
 const { User, Review, Listing, Category } = require('../models');
+const sequelize = require('../config/connection.js');
 // renders homepage
 router.get('/', async (req, res) => {
   res.render('home', {
@@ -102,11 +103,24 @@ router.get('/post', async (req, res) => {
 // renders account
 router.get('/profile/:id', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id);
+    const userData = await User.findByPk(req.params.id, {
+      include: [
+        { model: Listing },
+        { model: Review, as: 'reviews', attributes: [] },
+      ],
+      attributes: {
+        include: [
+          [sequelize.fn('AVG', sequelize.col('reviews.score')), 'avgScore'],
+        ],
+      },
+    });
     if (!userData) {
       res.status(404).json({ message: 'There is no user with that id!' });
     }
+
     const user = userData.get({ plain: true });
+    user.avgScore = user.avgScore * 20;
+    console.log(user);
     res.render('profile', {
       loggedIn: req.session.loggedIn,
       user: req.session.user_id,

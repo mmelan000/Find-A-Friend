@@ -135,7 +135,8 @@ router.get('/friends', async (req, res) => {
   const friendList = await User.findAll().catch((err) => {
     res.json(err);
   });
-  const friends = friendList.map((friend) => friend.get({ plain: true }));
+  const friends = await friendList.map((friend) => friend.get({ plain: true }));
+  console.log(friends);
   res.render('friends', {
     loggedIn: req.session.loggedIn,
     user: req.session.user_id,

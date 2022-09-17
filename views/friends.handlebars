@@ -1,46 +1,26 @@
 <div class='container page-container'>
   <div class='row ng-scope'>
-    <div class='col-md-3 col-md-push-9'>
-      <h4>Results <span class='fw-semi-bold'>Filtering</span></h4>
-      <p class='text-muted fs-mini'>Listed content is categorized by the
-        following groups:</p>
-      <ul class='nav nav-pills nav-stacked search-result-categories mt'>
-        <li><a href='#'>Friends <span class='badge'>34</span></a>
-        </li>
-        <li><a href='#'>Pages <span class='badge'>9</span></a>
-        </li>
-        <li><a href='#'>Images</a>
-        </li>
-        <li><a href='#'>Groups</a>
-        </li>
-        <li><a href='#'>Globals <span class='badge'>18</span></a>
-        </li>
-      </ul>
-    </div>
     <div class='col-md-9 col-md-pull-3'>
       {{#each friends as |friend|}}
-        <section class='search-result-item'>
-          <a class='image-link' href='#'><img
+              <section class='search-result-item'>
+          <a class='image-link' href='/profile/{{id}}'><img
               class='image'
-              src='https://bootdey.com/img/Content/avatar/avatar1.png'
+              src='https://www.gravatar.com/avatar/{{hashed_email}}'
             />
           </a>
           <div class='search-result-item-body'>
             <div class='row'>
               <div class='col-sm-9'>
                 <h4 class='search-result-item-heading'><a
-                    href='#'
-                  >{{friend.first_name}} {{friend.last_name}}</a></h4>
-                <p class='info'>{{friend.city}} {{friend.state}}</p>
-                <p class='description'>Not just usual Metro. But something
-                  bigger. Not just usual widgets, but real widgets. Not just yet
-                  another admin template, but next generation admin template.</p>
+                    href='/profile/{{id}}'
+                  >{{first_name}} {{last_name}}</a></h4>
+                <p class='info'>{{city}} {{state}}</p>
               </div>
-              {{#if ./loggedIn}}
+              {{#if ../loggedIn}}
                 <div class='col-sm-3 text-align-center'>
                   <a
                     class='btn btn-primary btn-info btn-sm'
-                    href='/profile/{{friend.id}}'
+                    href='/profile/{{id}}'
                   >Add friend</a>
                 </div>
               {{/if}}
@@ -48,15 +28,6 @@
           </div>
         </section>
       {{/each}}
-      <div class='text-align-center mt-3'>
-        <ul class='pagination'>
-          <li class='page-item'><a class='page-link' href='#'>Previous</a></li>
-          <li class='page-item'><a class='page-link' href='#'>1</a></li>
-          <li class='page-item'><a class='page-link' href='#'>2</a></li>
-          <li class='page-item'><a class='page-link' href='#'>3</a></li>
-          <li class='page-item'><a class='page-link' href='#'>Next</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>

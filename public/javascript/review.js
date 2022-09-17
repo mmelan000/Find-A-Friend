@@ -6,9 +6,6 @@ const newReview = async (event) => {
   const user_id = event.target.id;
   const reviewee_id = event.target.value;
 
-  console.log(user_id);
-  console.log('*************');
-  console.log(reviewee_id);
   try {
     if (score && text && user_id && reviewee_id) {
       const response = await fetch('/api/review', {

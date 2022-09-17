@@ -68,7 +68,7 @@ const userData = [
   },
   {
     username: 'Cloud',
-    email: 'mm.melanson000@gmail.com',
+    email: 'm.melanson000@gmail.com',
     first_name: 'Michael',
     last_name: 'Melanson',
     age: '1987-01-01',

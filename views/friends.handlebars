@@ -10,18 +10,23 @@
           </a>
           <div class='search-result-item-body'>
             <div class='row'>
-              <div class='col-sm-9'>
+              <div class='col-sm-8'>
                 <h4 class='search-result-item-heading'><a
                     href='/profile/{{id}}'
                   >{{first_name}} {{last_name}}</a></h4>
                 <p class='info'>{{city}} {{state}}</p>
               </div>
               {{#if ../loggedIn}}
-                <div class='col-sm-3 text-align-center'>
+                <div class='col text-align-center d-flex'>
                   <a
-                    class='btn btn-primary btn-info btn-sm'
+                    class='btn btn-primary btn-info btn-sm btn-link-custom'
                     href='/profile/{{id}}'
                   >Add friend</a>
+                  <a
+                    class='btn btn-primary btn-info btn-sm btn-link-custom'
+                    href='/reviews/{{id}}'
+                    id="add-review"
+                  >Add Review</a>
                 </div>
               {{/if}}
             </div>

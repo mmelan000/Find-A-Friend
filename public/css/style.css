@@ -12938,6 +12938,12 @@ ul {
   list-style: none;
 }
 
+.btn-link-custom {
+  border: 1px solid #ccc !important;
+  height: fit-content !important;
+  margin-right: 8px;
+}
+
 .list-disk li {
   list-style: none;
   margin-bottom: 12px;

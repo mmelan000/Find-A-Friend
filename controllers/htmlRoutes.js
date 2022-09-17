@@ -66,12 +66,16 @@ router.get('/listings', async (req, res) => {
 // renders individual listings
 router.get('/listings/:id', withAuth, async (req, res) => {
   try {
-    const listingData = await Listing.findByPk(req.params.id);
+    const listingData = await Listing.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
     if (!listingData) {
       res.status(404).json({ message: 'This is no listing with that id!' });
     }
 
     const listing = listingData.get({ plain: true });
+
+    console.log(listing);
     res.render('activity', {
       loggedIn: req.session.loggedIn,
       user: req.session.user_id,
@@ -135,7 +139,8 @@ router.get('/friends', async (req, res) => {
   const friendList = await User.findAll().catch((err) => {
     res.json(err);
   });
-  const friends = friendList.map((friend) => friend.get({ plain: true }));
+  const friends = await friendList.map((friend) => friend.get({ plain: true }));
+  console.log(friends);
   res.render('friends', {
     loggedIn: req.session.loggedIn,
     user: req.session.user_id,

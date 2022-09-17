@@ -83,7 +83,9 @@ User.init(
           updateUserData.attributes.password,
           10
         );
-        updateUserData.hashed_email = md5(updateUserData.hashed_email);
+        updateUserData.hashed_email = md5(
+          updateUserData.hashed_email.trim().toLowerCase()
+        );
         return updateUserData;
       },
     },

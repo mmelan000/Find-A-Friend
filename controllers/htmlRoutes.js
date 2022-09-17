@@ -136,15 +136,27 @@ router.get('/profile/:id', withAuth, async (req, res) => {
 });
 // friends
 router.get('/friends', async (req, res) => {
-  const friendList = await User.findAll().catch((err) => {
-    res.json(err);
-  });
-  const friends = await friendList.map((friend) => friend.get({ plain: true }));
-  console.log(friends);
-  res.render('friends', {
+  try {
+    const friendList = await User.findAll().catch((err) => {
+      res.json(err);
+    });
+    const friends = await friendList.map((friend) =>
+      friend.get({ plain: true })
+    );
+    res.render('friends', {
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+      friends,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get('/reviews/:id', async (req, res) => {
+  res.render('review', {
     loggedIn: req.session.loggedIn,
     user: req.session.user_id,
-    friends,
   });
 });
 

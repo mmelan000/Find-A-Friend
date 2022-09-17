@@ -154,9 +154,11 @@ router.get('/friends', async (req, res) => {
 });
 
 router.get('/reviews/:id', async (req, res) => {
+  const reviewee_id = req.params.id;
   res.render('review', {
     loggedIn: req.session.loggedIn,
     user: req.session.user_id,
+    reviewee_id,
   });
 });
 

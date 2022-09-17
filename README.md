@@ -14,12 +14,6 @@ I WANT a social website
 SO THAT I can find other people who want to do something I am interested in
 ```
 
-## Acceptance Criteria
-
-```md
-TBD
-```
-
 ## Table of Contents
 
 1. [Description](#description)
@@ -49,6 +43,22 @@ SECRET=YOUR_SESSION_SECRET_GOES_HERE
 ## Usage
 
 [Deployed App](https://fathomless-gorge-22203.herokuapp.com/)
+
+![App Screenshot](./assets/images/SS1.png)
+
+![App Screenshot](./assets/images/SS2.png)
+
+![App Screenshot](./assets/images/SS3.png)
+
+![App Screenshot](./assets/images/SS4.png)
+
+![App Screenshot](./assets/images/SS5.png)
+
+![App Screenshot](./assets/images/SS6.png)
+
+![App Screenshot](./assets/images/SS7.png)
+
+![App Screenshot](./assets/images/SS8.png)
 
 ## Contributors
 

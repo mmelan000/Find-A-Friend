@@ -25,19 +25,34 @@ const signupFormHandler = async (event) => {
     const response = await fetch('/api/user', {
       method: 'POST',
       body: JSON.stringify({
-        username,
-        email,
-        first_name,
-        last_name,
-        age,
-        languages,
-        city,
-        state,
-        country,
-        password,
+        username: username,
+        email: email,
+        first_name: first_name,
+        last_name: last_name,
+        age: age,
+        languages: languages,
+        city: city,
+        state: state,
+        country: country,
+        password: password,
+        hashed_email: email,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    console.log(
+      username,
+      email,
+      first_name,
+      last_name,
+      age,
+      languages,
+      city,
+      state,
+      country,
+      password1,
+      password2
+    );
 
     if (response.ok) {
       document.location.replace('/');

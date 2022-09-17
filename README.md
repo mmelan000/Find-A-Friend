@@ -48,7 +48,7 @@ SECRET=YOUR_SESSION_SECRET_GOES_HERE
 
 ## Usage
 
-TBD
+[Deployed App](https://fathomless-gorge-22203.herokuapp.com/)
 
 ## Contributors
 
